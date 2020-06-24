@@ -26,14 +26,6 @@ Structures.extend('Guild', function(Guild) {
   return MusicGuild;
 });
 
-client.once('ready', () => {
-  console.log('Ready!');
-  client.user.setActivity(`${prefix}help`, {
-    type: 'WATCHING',
-    url: 'https://github.com/galnir/Master-Bot'
-  });
-});
-
 client.on('voiceStateUpdate', async (___, newState) => {
   if (
     newState.member.user.bot &&
