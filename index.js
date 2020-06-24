@@ -26,9 +26,6 @@ Structures.extend('Guild', function(Guild) {
   return MusicGuild;
 });
 
-const client = new CommandoClient({
-  commandPrefix: ">",
-});
 
 client.registry
   .registerDefaultTypes()
