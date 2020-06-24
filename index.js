@@ -1,6 +1,8 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures } = require('discord.js');
 const path = require('path');
+const Discord = require('discord.js');
+const client = new Discord.Client();
 const prefix = process.env.PREFIX;
 const ownerID = process.env.OWNERID;
 
@@ -24,6 +26,30 @@ Structures.extend('Guild', function(Guild) {
     }
   }
   return MusicGuild;
+});
+
+client.registry
+  .registerDefaultTypes()
+  .registerGroups([
+    ['music', 'Music Command Group'],
+    ['gifs', 'Gif Command Group'],
+    ['other', 'random types of commands group'],
+    ['guild', 'guild related commands']
+  ])
+  .registerDefaultGroups()
+  .registerDefaultCommands({
+    eval: false,
+    prefix: false,
+    commandState: false
+  })
+  .registerCommandsIn(path.join(__dirname, 'commands'));
+
+client.once('ready', () => {
+  console.log('Ready!');
+  client.user.setActivity(`${prefix}help`, {
+    type: 'WATCHING',
+    url: 'https://github.com/galnir/Master-Bot'
+  });
 });
 
 client.on('voiceStateUpdate', async (___, newState) => {
