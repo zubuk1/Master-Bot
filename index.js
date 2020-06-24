@@ -1,7 +1,7 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures } = require('discord.js');
 const path = require('path');
-const { prefix, discord_owner_id }= require('./config.json');
+const prefix= require('./config.json');
 
 Structures.extend('Guild', function(Guild) {
   class MusicGuild extends Guild {
@@ -27,7 +27,6 @@ Structures.extend('Guild', function(Guild) {
 
 const client = new CommandoClient({
   commandPrefix: prefix,
-  owner: discord_owner_id // value comes from config.json
 });
 
 client.registry
