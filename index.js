@@ -26,23 +26,6 @@ Structures.extend('Guild', function(Guild) {
   return MusicGuild;
 });
 
-
-client.registry
-  .registerDefaultTypes()
-  .registerGroups([
-    ['music', 'Music Command Group'],
-    ['gifs', 'Gif Command Group'],
-    ['other', 'random types of commands group'],
-    ['guild', 'guild related commands']
-  ])
-  .registerDefaultGroups()
-  .registerDefaultCommands({
-    eval: false,
-    prefix: false,
-    commandState: false
-  })
-  .registerCommandsIn(path.join(__dirname, 'commands'));
-
 client.once('ready', () => {
   console.log('Ready!');
   client.user.setActivity(`${prefix}help`, {
